@@ -22,7 +22,7 @@ func helper(arr []int, idx, total int, Temp map[int]int) int {
 	if idx == len(arr)-1 {
 		return total 
 	}
-	
+
 	result1 := helper(arr, idx+1, total + int(math.Abs(float64(arr[idx]-arr[idx+1]))), Temp)
 	result2 := math.MaxInt32
 	if idx + 2 < len(arr) {
@@ -30,6 +30,7 @@ func helper(arr []int, idx, total int, Temp map[int]int) int {
 	}
 
 	result := int(math.Min(float64(result1), float64(result2)))
+	fmt.Println("function call")
 	return result
 }
  
