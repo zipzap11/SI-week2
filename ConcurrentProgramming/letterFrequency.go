@@ -2,19 +2,25 @@ package main
 
 import (
 	"fmt"
+	"sync"
 )
 
 
 
 func Lfreq(s string)  {
 	result := make(map[rune]int)
-	channel := make(chan rune)
+	someMapMutex := sync.RWMutex{}
+	// channel := make(chan rune)
 	for _, r := range s {
-		go func()  {
-			channel <- r
-		}()
-		result[<- channel]++
+		go func(r rune)  {
+			// channel <- r
+			someMapMutex.Lock()
+			result[r]++
+			someMapMutex.Unlock()
+		}(r)
+		// result[<-channel]++
 	}
+	// close(channel)
 	for key, val := range result {
 		fmt.Printf("%s: %d\n", string(key), val)
 	}
