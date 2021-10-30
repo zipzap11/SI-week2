@@ -7,7 +7,7 @@ import (
 
 
 
-func Lfreq(s string)  {
+func countFreq(s string)  {
 	result := make(map[rune]int)
 	someMapMutex := sync.RWMutex{}
 	// channel := make(chan rune)
@@ -27,5 +27,5 @@ func Lfreq(s string)  {
 }
 
 func main() {
-	Lfreq("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
+	countFreq("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
 }
